@@ -91,3 +91,12 @@ plt.ylabel('Frequency')
 
 plt.show()
 fig.show()
+
+
+fig = plt.figure(figsize=(10,4))
+
+plt.boxplot(var_grades)
+
+plt.title('Data Distribution')
+
+fig
