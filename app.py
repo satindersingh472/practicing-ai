@@ -63,3 +63,7 @@ mean_grade = df_students.Grade.mean()
 # print the mean study and grades
 
 print('Average weekly study hours: {:.2f}\nAverage Grade: {:.2f}'.format(mean_study,mean_grade))
+
+# get the students who studied more than average
+
+print(df_students['StudyHours'] > mean_study)
