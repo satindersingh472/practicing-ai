@@ -62,8 +62,21 @@ mean_grade = df_students.Grade.mean()
 
 # print the mean study and grades
 
-print('Average weekly study hours: {:.2f}\nAverage Grade: {:.2f}'.format(mean_study,mean_grade))
+# print('Average weekly study hours: {:.2f}\nAverage Grade: {:.2f}'.format(mean_study,mean_grade))
 
 # get the students who studied more than average
 
-print(df_students['StudyHours'] > mean_study)
+# print(df_students[df_students['StudyHours'] > mean_study])
+
+# get the mean  grade of students who scored more than average
+
+# print(df_students[df_students['StudyHours'] > mean_study]['Grade'].mean())
+# to add another column name pass
+passes = pd.Series(df_students['Grade'] >= 60)
+# concat the column with the array on the same axis
+df_students = pd.concat([df_students,passes.rename('Pass')],axis=1)
+# print(df_students)
+
+# grouping student based on pass and fail  and calculating mean of students grades and hours they studied
+
+print(df_students.groupby(df_students['Pass'])[['Grade','StudyHours']].mean())
