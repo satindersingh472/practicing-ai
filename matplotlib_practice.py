@@ -18,6 +18,10 @@ plt.xlabel('Student')
 plt.ylabel('Grade')
 plt.grid(color="#95a5a6",linestyle='--', linewidth=2,axis='y',alpha=0.7)
 plt.xticks(rotation=45)
-plt.show()
+
+
+fig,ax = plt.subplots(1,2,figsize=(10,4))
+
+fig.show()
 
 # print(df_students)
