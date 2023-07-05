@@ -73,7 +73,16 @@ def show_density(var_data):
 
     plt.show()
 
-show_density(col)
+# show_density(col)
+
+
+for col_name in ['StudyHours','Grade']:
+    col = df_students[col_name]
+    range = col.max() - col.min()
+    variance = col.var()
+    standard_deviation = col.std()
+
+    print('{}\n- Range: {:.2f}\n- Variance: {:.2f}\n- Standard Deviation: {:.2f}'.format(col_name,range,variance,standard_deviation))
 
 
 # visualize the data on the graph
