@@ -11,7 +11,13 @@ passes = pd.Series(df_students['Grade'] >= 60)
 # concat the pass series at axis 1 
 df_students = pd.concat([df_students,passes.rename('Pass')],axis=1)
 # visualize the data on the graph
-plt.bar(x=df_students['Name'],height=df_students['Grade'])
+# we can add color, title, labels, grid and rotate the x markers inside the graph
+plt.bar(x=df_students['Name'],height=df_students['Grade'], color="orange")
+plt.title("Student Grades")
+plt.xlabel('Student')
+plt.ylabel('Grade')
+plt.grid(color="#95a5a6",linestyle='--', linewidth=2,axis='y',alpha=0.7)
+plt.xticks(rotation=45)
 plt.show()
 
 # print(df_students)
