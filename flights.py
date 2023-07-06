@@ -21,12 +21,23 @@ for group in groups:
 
 
 
-print('Flights on time: {}\nFlights delayed: {}'.format(flight_ontime,flights_delayed))
-print(df_flights['ArrDel15'].mean())
+# print('Flights on time: {}\nFlights delayed: {}'.format(flight_ontime,flights_delayed))
+# print(df_flights['ArrDel15'].mean())
 
 delay_counts = df_flights['ArrDel15'].value_counts()
-plt.pie(delay_counts,labels=delay_counts,autopct='%1.1f%%')
-plt.title('Flights get delayed by airports')
-plt.show()
+# plt.pie(delay_counts,labels=delay_counts,autopct='%1.1f%%')
+# plt.title('Flights get delayed by airports')
+# plt.show()
 
 # plt.pie(x=df_flights['ArrDel15'],height=len(df_flights))
+
+groupByDay = df_flights.groupby(df_flights['DayOfWeek'])
+
+print(groupByDay)
+flightByDays = []
+for day in groupByDay:
+    flightByDays.append(len(day[1]))
+days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+plt.pie(flightByDays,labels=flightByDays, autopct='%1.1f%%')
+plt.legend(days)
+plt.show()
