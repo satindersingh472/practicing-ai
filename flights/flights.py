@@ -38,6 +38,7 @@ flightByDays = []
 for day in groupByDay:
     flightByDays.append(len(day[1]))
 days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+fig = plt.figure(figsize=(10,4))
 plt.pie(flightByDays,labels=flightByDays, autopct='%1.1f%%')
 plt.legend(days)
 plt.show()
