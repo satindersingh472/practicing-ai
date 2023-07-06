@@ -171,7 +171,7 @@ df_regression['error'] = df_regression['fx'] - df_regression['Grade']
 #create a scatter plot of grade vs study hours
 df_regression.plot.scatter(x='StudyHours',y='Grade')
 plt.plot(df_regression['StudyHours'],df_regression['fx'],color='cyan')
-# plt.show()
+plt.show()
 
 # define a function based on our regression coefficients
 def f(x):
