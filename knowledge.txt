@@ -1,0 +1,10 @@
+There are many algorithm for machine learning and they can be divided into Regression and classification algorithms
+
+Regression is where model predicts the number. It is the relationship between the features and labels.
+after we have fetures and labels then split the data into training and testing subsets
+
+to calculate the loss we can use root mean squared error method 
+1.Regression algorithms predict a y value that is a numeric value such as a price or the number of the sales.
+2.classification algorithms predicts to which class or category an observation belongs
+
+The first step should be to explore the data and find relationship
