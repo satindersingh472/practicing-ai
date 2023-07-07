@@ -127,7 +127,7 @@ plt.show()
 
 #train the model
 model = GradientBoostingRegressor().fit(features_train,label_train)
-
+print(model)
 #evaluate model
 predictions = model.predict(features_test)
 print('GradientBoostReggressor ---------------')
