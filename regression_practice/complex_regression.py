@@ -5,8 +5,10 @@ from sklearn.model_selection import train_test_split
 import numpy as np
 import matplotlib.pyplot as plt
 
+# import different models
 from sklearn.tree import DecisionTreeRegressor,export_text
 from sklearn.linear_model import Lasso
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 
 #load the training set
 bike_data = pd.read_csv('data/daily-bike-share.csv')
@@ -84,7 +86,7 @@ print('R2: ',r2)
 plt.scatter(label_test,predictions)
 plt.xlabel('Actual Test Labels')
 plt.ylabel("Predicted Test Labels")
-plt.title('Daily Bike Rentals Predictions - Linear Regression ')
+plt.title('Daily Bike Rentals Predictions - Decision Tree Regressor ')
 
 # overlay the regression line
 z = np.polyfit(label_test,predictions,1)
@@ -92,3 +94,59 @@ p = np.poly1d(z)
 plt.plot(label_test,p(label_test),color='magenta')
 plt.show()
 
+# train the model
+model = RandomForestRegressor().fit(features_train,label_train)
+
+#Evaluate the model using the test data
+predictions = model.predict(features_test)
+print('Random Forest Regressor model \n--------------------------')
+mse = mean_squared_error(label_test,predictions)
+print("MSE:",mse)
+# root mean squared error
+rmse = np.sqrt(mse)
+print("Root Mean Squared Error: ",rmse)
+# r2 R-Squared
+r2 = r2_score(label_test,predictions)
+print('R2: ',r2)
+
+# plot predicted vs actual
+
+
+plt.scatter(label_test,predictions)
+plt.xlabel('Actual Test Labels')
+plt.ylabel("Predicted Test Labels")
+plt.title('Daily Bike Rentals Predictions - Random Forest Regressor ')
+
+# overlay the regression line
+z = np.polyfit(label_test,predictions,1)
+p = np.poly1d(z)
+plt.plot(label_test,p(label_test),color='magenta')
+plt.show()
+
+# Gradient Boosting Regressor
+
+#train the model
+model = GradientBoostingRegressor().fit(features_train,label_train)
+
+#evaluate model
+predictions = model.predict(features_test)
+print('GradientBoostReggressor ---------------')
+mse = mean_squared_error(label_test,predictions)
+print("MSE:",mse)
+# root mean squared error
+rmse = np.sqrt(mse)
+print("Root Mean Squared Error: ",rmse)
+# r2 R-Squared
+r2 = r2_score(label_test,predictions)
+print('R2: ',r2)
+
+plt.scatter(label_test,predictions)
+plt.xlabel('Actual Test Labels')
+plt.ylabel("Predicted Test Labels")
+plt.title('Daily Bike Rentals Predictions - Gradient Boost Regressor ')
+
+# overlay the regression line
+z = np.polyfit(label_test,predictions,1)
+p = np.poly1d(z)
+plt.plot(label_test,p(label_test),color='magenta')
+plt.show()
